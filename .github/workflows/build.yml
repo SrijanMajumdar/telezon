@@ -24,9 +24,13 @@ jobs:
           chmod +x gradlew
           ./gradlew assembleafatRelease
 
+      - name: Find APK
+        run: |
+          find . -type f -name "*.apk" -print
+
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: Telezon-APK
           path: |
-            TMessagesProj/build/outputs/apk/**/*.apk
+            **/*.apk
